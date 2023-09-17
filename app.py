@@ -7,9 +7,9 @@ import pandas as pd
 import joblib
 from fastai.vision.all import *
 
-import pathlib
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+#import pathlib
+#temp = pathlib.PosixPath
+#pathlib.PosixPath = pathlib.WindowsPath
 
 # Load the data from the CSV file
 data = pd.read_csv('data/data.csv')
