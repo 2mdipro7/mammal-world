@@ -46,7 +46,7 @@ if input_method == "Image Upload" and uploaded_image is not None:
     result = client.predict(temp_file.name, api_name="/predict")
 
     # Check if the response is a file path and read its content
-    if isinstance(result, str) and result.startswith("C:"):
+    if isinstance(result, str):
         with open(result, 'r') as json_file:
             json_data = json.load(json_file)
 
