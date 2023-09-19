@@ -5,9 +5,9 @@ import json
 import pandas as pd
 import time
 
-#import pathlib
-#temp = pathlib.PosixPath
-#pathlib.PosixPath = pathlib.WindowsPath
+import pathlib
+temp = pathlib.PosixPath
+pathlib.PosixPath = pathlib.WindowsPath
 
 # Initialize Streamlit session state if not already initialized
 if 'initialized' not in st.session_state:
@@ -18,7 +18,7 @@ if 'initialized' not in st.session_state:
 data = pd.read_csv('data/data.csv')
 
 # Initialize the Gradio client
-gradio_api_url = "https://dipro7-mammals-of-india.hf.space/"
+gradio_api_url = "https://dipro7-mammals-of-india.hf.space"
 client = Client(gradio_api_url)
 
 st.title("Mammal World - AI for Wildlife in India")
