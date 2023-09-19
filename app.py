@@ -1,11 +1,8 @@
 import streamlit as st
 from gradio_client import Client
-import io
 import tempfile
 import json
 import pandas as pd
-import joblib
-from fastai.vision.all import *
 import time
 
 #import pathlib
