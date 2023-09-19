@@ -18,7 +18,7 @@ if 'initialized' not in st.session_state:
 data = pd.read_csv('data/data.csv')
 
 # Initialize the Gradio client
-gradio_api_url = r"https://dipro7-mammals-of-india.hf.space/"
+gradio_api_url = f"https://dipro7-mammals-of-india.hf.space/"
 client = Client(gradio_api_url)
 
 st.title("Mammal World - AI for Wildlife in India")
