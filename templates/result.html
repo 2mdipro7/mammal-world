@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mammal Prediction Result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Species and Behavior Prediction</title>
 </head>
 <body>
-    <h1>Mammal Prediction Result</h1>
-    <p><strong>Species Prediction:</strong> {{ pred_label }}</p>
-    <p><strong>Confidence:</strong> {{ confidence }}%</p>
-    <p><strong>Behavior Prediction:</strong> {{ behavior_label }}</p>
-
-    <!-- Display the JSON paths for debugging purposes -->
-    <p><strong>JSON Paths:</strong> {{ result_paths }}</p>
+    <h1>Species Prediction</h1>
+    <p><strong>Species Label:</strong> {{ pred_label }}</p>
+    <p><strong>Species Confidence:</strong> {{ confidence }}%</p>
+    
+    <h1>Behavior Prediction</h1>
+    <p><strong>Behavior Label:</strong> {{ behavior_label }}</p>
+    <p><strong>Behavior Confidence:</strong> {{ behavior_confidence }}%</p>
 </body>
 </html>

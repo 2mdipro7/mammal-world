@@ -9,10 +9,10 @@
 <body>
     <h1>Mammal World - AI for Wildlife in India</h1>
     <p>Upload an image to predict the species and behavior of a mammal.</p>
-    <form method="POST">
-        <input type="text" name="result" value="['path/to/species.json', 'path/to/behavior.json']">
-        <button type="submit">Submit</button>
-    </form>    
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".jpg, .png, .jpeg">
+        <button type="submit">Upload Image</button>
+    </form>
     <!-- You can add more HTML elements here to display the prediction results -->
 </body>
 </html>
