@@ -16,11 +16,11 @@ client = Client(gradio_api_url)
 st.title("Mammal World - AI for Wildlife in India")
 
 # Load your pre-trained text classification model
-text_classifier_model = joblib.load('text_classifier_model.pkl')
+#text_classifier_model = joblib.load('text_classifier_model.pkl')
 
 # Load the CountVectorizer used during training
-with open('count_vectorizer.pkl', 'rb') as vectorizer_file:
-    count_vectorizer = joblib.load(vectorizer_file)
+#with open('count_vectorizer.pkl', 'rb') as vectorizer_file:
+    #count_vectorizer = joblib.load(vectorizer_file)
 
 uploaded_image = st.sidebar.file_uploader("Upload an image...", type=["jpg", "png", "jpeg"])
 
@@ -38,7 +38,7 @@ if input_method == "Image Upload" and uploaded_image is not None:
     result = client.predict(temp_file.name, api_name="/predict")
 
     # Check if the response is a file path and read its content
-    if isinstance(result, str) and result.startswith("C:"):
+    if isinstance(result, str):
         with open(result, 'r') as json_file:
             json_data = json.load(json_file)
 
@@ -79,43 +79,6 @@ if input_method == "Image Upload" and uploaded_image is not None:
             st.write("Error: Invalid response format in the JSON file.")
     else:
         st.write("Error: Invalid response from the API.")
-
-elif input_method == "Text Description":
-    st.sidebar.subheader("Text Description")
-    
-    with st.sidebar.form("animal_description_form"):
-        text_description = st.text_area("Describe an animal:")
-        submit_button = st.form_submit_button("Predict")
-    
-    if submit_button:
-        text_description = text_description.strip()
-        text_description_2d = [text_description]  # Convert to a 2D list
-        text_description_vector = count_vectorizer.transform(text_description_2d)
-        predicted_label = text_classifier_model.predict(text_description_vector)[0]
-
-        st.write(f"Predicted Animal: {predicted_label}")
-
-        species_info = data[data['SpeciesName'] == predicted_label]
-
-        if not species_info.empty:
-            st.subheader("Additional Information:")
-            # Define columns to display
-            columns_to_display = ['Overview', 'Size', 'Morphology', 'Behavior', 'Distribution', 'Habitat', 'Habitat Details', 'Conservation Status']
-
-            for column in columns_to_display:
-                if column in species_info.columns:
-                    st.subheader(column)
-                    st.write(species_info[column].values[0])
-                else:
-                    st.write(f"No {column} information found for the predicted species.")
-
-                    # Display selected columns in the sidebar as a vertical table with "Taxonomy" header
-                    sidebar_columns = ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']
-                    sidebar_data = species_info[sidebar_columns].T  # Transpose the DataFrame
-                    sidebar_data.columns = ["Taxonomy"]  # Set "Taxonomy" as the header
-                    st.sidebar.write(sidebar_data)
-        else:
-            st.write("No additional information found for the predicted species.")
 
 else:
     # Display the introductory content when no input is provided
