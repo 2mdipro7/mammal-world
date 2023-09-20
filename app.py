@@ -17,9 +17,16 @@ import time
 # Load the data from the CSV file
 data = pd.read_csv('data/data.csv')
 
+# Import necessary libraries
+import streamlit as st
+import json
+import tempfile
+import time
+from gradio_client import Client
+
 # Initialize the Gradio client
 gradio_api_url = "https://dipro7-mammals-of-india.hf.space/"
-client = Client(gradio_api_url)
+client = Client(gradio_api_url, api_name="/predict")
 
 st.title("Mammal World - AI for Wildlife in India")
 
@@ -44,7 +51,7 @@ if input_method == "Image Upload" and uploaded_image is not None:
 
     # Make a prediction using the Gradio client
     with st.spinner("Making Prediction..."):
-        result = client.predict(temp_file.name, api_name="/predict")
+        result = client.predict(temp_file.name)
 
     # Clear the spinner
     st.spinner(None)  # This will remove the spinner once prediction is done
@@ -79,7 +86,7 @@ if input_method == "Image Upload" and uploaded_image is not None:
             with open(behavior_prediction_json_path, 'r') as behavior_json_file:
                 behavior_json_data = json.load(behavior_json_file)
 
-            behavior_label = behavior_json_data.get("label", "Behavior not predicted")
+            behavior_label = behavior_json_data.get("behavior", "Behavior not predicted")
             behavior_confidences = behavior_json_data.get("confidences", [])
 
             if behavior_confidences:
@@ -90,7 +97,6 @@ if input_method == "Image Upload" and uploaded_image is not None:
             st.write("Error: Invalid response format for behavior prediction.")
             behavior_label = "Error"
             behavior_confidence = 0
-
 
         # Create a colored box for the prediction result
         prediction_result = f'<div style="background-color: #34ebcc; padding: 10px; border-radius: 5px;">' \
