@@ -44,7 +44,7 @@ if input_method == "Image Upload" and uploaded_image is not None:
 
     # Make a prediction using the Gradio client
     with st.spinner("Making Prediction..."):
-        result = client.predict(temp_file.name)
+        result = client.predict(temp_file.name, api_name="/predict")
 
     # Clear the spinner
     st.spinner(None)  # This will remove the spinner once prediction is done
