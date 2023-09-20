@@ -18,7 +18,7 @@ import time
 data = pd.read_csv('data/data.csv')
 
 # Initialize the Gradio client
-gradio_api_url = f"https://dipro7-mammals-of-india.hf.space/"
+gradio_api_url = "https://dipro7-mammals-of-india.hf.space/"
 client = Client(gradio_api_url)
 
 st.title("Mammal World - AI for Wildlife in India")
@@ -44,7 +44,7 @@ if input_method == "Image Upload" and uploaded_image is not None:
 
     # Make a prediction using the Gradio client
     with st.spinner("Making Prediction..."):
-        result = client.predict(temp_file.name)
+        result = client.predict(temp_file.name, api_name="/predict")
 
     # Clear the spinner
     st.spinner(None)  # This will remove the spinner once prediction is done
