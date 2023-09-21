@@ -5,14 +5,9 @@ import json
 import pandas as pd
 import time
 
-#import pathlib
-#temp = pathlib.PosixPath
-#pathlib.PosixPath = pathlib.WindowsPath
-
-# Initialize Streamlit session state if not already initialized
-#if 'initialized' not in st.session_state:
-    #st.session_state.initialized = True
-    #st.session_state.predictions = {}
+# Initialize Streamlit session state to store uploaded images and results
+if 'uploaded_images' not in st.session_state:
+    st.session_state.uploaded_images = []
 
 # Load the data from the CSV file
 data = pd.read_csv('data/data.csv')
@@ -26,9 +21,9 @@ st.title("Mammal World - AI for Wildlife in India")
 uploaded_image = st.sidebar.file_uploader("Upload an image...", type=["jpg", "png", "jpeg"])
 
 # Create a sidebar option for selecting input method
-input_method = st.sidebar.radio("Select Input Method", ("Image Upload", "Text Description"))
+#input_method = st.sidebar.radio("Select Input Method", ("Image Upload", "Text Description"))
 
-if input_method == "Image Upload" and uploaded_image is not None:
+if uploaded_image is not None:
     st.sidebar.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
     
     # Create a temporary file to store the image
@@ -129,6 +124,29 @@ if input_method == "Image Upload" and uploaded_image is not None:
                             f'<strong>Conservation Status:</strong> {conservation_status}</div>'
 
         st.markdown(conservation_result, unsafe_allow_html=True)
+
+        # Save the uploaded image and its results to session state
+        st.session_state.uploaded_images.append({
+            "image": uploaded_image,
+            "pred_label": pred_label,
+            "confidence": confidence,
+            "behavior_label": behavior_label,
+            "behavior_confidence": behavior_confidence,
+            "conservation_status": conservation_status
+        })
+
+        # Display the saved images and their results in the sidebar in descending order
+        if st.session_state.uploaded_images:
+            st.sidebar.header("Previous Uploads and Results:")
+            for i, uploaded_data in enumerate(reversed(st.session_state.uploaded_images)):  # Reverse the order
+                st.sidebar.subheader(f"Uploaded Image #{len(st.session_state.uploaded_images) - i}")
+                st.sidebar.image(uploaded_data["image"], caption=f"Uploaded Image #{len(st.session_state.uploaded_images) - i}", use_column_width=True)
+                # Display additional information about each image
+                st.sidebar.text(f"Prediction: {uploaded_data['pred_label']}")
+                st.sidebar.text(f"Confidence: {uploaded_data['confidence']:.2f}%")
+                st.sidebar.text(f"Behavior Prediction: {uploaded_data['behavior_label']}")
+                st.sidebar.text(f"Behavior Confidence: {uploaded_data['behavior_confidence']:.2f}%")
+                st.sidebar.text(f"Conservation Status: {uploaded_data['conservation_status']}")
 
         # Fetch additional information from the CSV file based on the predicted label
         try:
