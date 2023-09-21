@@ -65,7 +65,7 @@ Our AI models are deployed through a user-friendly web application built with St
 
 ### Huggingface model space - https://huggingface.co/spaces/dipro7/mammals-of-india
 
-### On Render - https://mammal-world.onrender.com/
+### On Streamlit - https://mammal-world.streamlit.app/
 
 ## Contributing
 
