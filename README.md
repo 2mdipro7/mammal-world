@@ -1,5 +1,9 @@
 # Mammal World - AI for Wildlife in India
 
+Please visit my portfolio to learn more about this project.
+
+[![View Portfolio](https://img.shields.io/badge/View-Portfolio-brightgreen.svg?style=for-the-badge&logo=appveyor)](https://2mdipro7.github.io/portfolio/projects/mammal-world.html)
+
 ## Table of Contents
 - [Problem Statement](#problem-statement)
 - [Data Collection](#data-collection)
@@ -24,6 +28,8 @@ Then we collected cleaned and collected our raw text data by verifying these dat
 
 Finally, we collected a vast dataset of images of 103 mammal species indigenous to the Indian subcontinent. The images were sourced from the web using google search engine api and the search_images_ddg() of Fastai.
 
+[![Image Collection](https://img.shields.io/badge/Image%20Collection-blue?logo=Google-Colab)](https://colab.research.google.com/drive/1MB6SqMxQL-d7uKEQTw1Bzv22m-Mi1ir7?usp=sharing)
+
 ### Nighttime Image Augmentation
 
 Given that most images collected were of daytime images, we employed nighttime image augmentation techniques. This involved adjusting brightness, contrast, and adding artificial noise to simulate low-light conditions, making our model robust to various lighting scenarios.
@@ -47,6 +53,10 @@ We trained an AI model capable of:
 - Behavior Recognition: Analyzing animal interactions, mating rituals, feeding habits, and more.
 - Real-Time Monitoring: Detecting unusual behaviors or threats to wildlife.
 
+[![Behavior Model](https://img.shields.io/badge/Behavior%20Model-red?logo=Google-Colab)](https://colab.research.google.com/drive/1blpMrT_71oER3HeUWQiH4xTBsmzeHMhf?usp=sharing)
+
+[![Final Model](https://img.shields.io/badge/Final%20Model-green?logo=Google-Colab)](https://colab.research.google.com/drive/1P8kzuABcCqvLawsC9XYHY_KZ9ngt0xj7?usp=sharing)
+
 ### Training Pipeline
 
 Our model was trained on a combination of image and text data. We used PyTorch and Fastai to build custom models, incorporating state-of-the-art deep learning architectures.
@@ -63,9 +73,9 @@ Our AI models are deployed through a user-friendly web application built with St
 
 ## Live Links
 
-### Huggingface model space - https://huggingface.co/spaces/dipro7/mammals-of-india
+### Huggingface model space - [![HF Space](https://img.shields.io/badge/HuggingFace-Space-brightgreen.svg?style=for-the-badge&logo=appveyor)](https://huggingface.co/spaces/dipro7/mammals-of-india)
 
-### On Streamlit - https://mammal-world.streamlit.app/
+### On Streamlit - [![Web App](https://img.shields.io/badge/Streamlit-App-brightyellow.svg?style=for-the-badge&logo=appveyor)](https://mammal-world.streamlit.app/)
 
 ## Contributing
 
