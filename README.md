@@ -73,9 +73,9 @@ Our AI models are deployed through a user-friendly web application built with St
 
 ## Live Links
 
-### Huggingface model space - [![HF Space](https://img.shields.io/badge/HuggingFace-Space-brightgreen.svg?style=for-the-badge&logo=appveyor)](https://huggingface.co/spaces/dipro7/mammals-of-india)
+[![HF Space](https://img.shields.io/badge/HuggingFace-Space-brightgreen.svg?style=for-the-badge&logo=appveyor)](https://huggingface.co/spaces/dipro7/mammals-of-india)
 
-### On Streamlit - [![Web App](https://img.shields.io/badge/Streamlit-App-brightyellow.svg?style=for-the-badge&logo=appveyor)](https://mammal-world.streamlit.app/)
+[![Web App](https://img.shields.io/badge/Streamlit-App-brightred.svg?style=for-the-badge&logo=appveyor)](https://mammal-world.streamlit.app/)
 
 ## Contributing
 
