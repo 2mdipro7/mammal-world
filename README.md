@@ -45,7 +45,7 @@ We meticulously cleaned and preprocessed the collected data. This involved:
 
 ## Model Training
 
-### Multi-modal, Multi-target AI Model
+### Multi-target AI Model
 
 We trained an AI model capable of:
 
